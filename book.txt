@@ -1,0 +1,122 @@
+HTML
+
+1. 태그
+태그는 시작태그, 끝태그
+      시작 태그로 끝난다.
+ex)
+    <button>
+    </button>
+
+[형제 관계] 같은 단의 아래는 동생 위는 형으로 취급한다.
+    <p> abcde </p>
+    <p> dfmdodsaf</p>
+    
+    위의 둘은 형제 관계
+    
+    위와 같은 경우 위의 abcde는 아래 p 태그의 형제 관계에서 형
+    abcde는 아래의 p 태그가 동생
+
+
+Element: 태그가 포함하는 모든 자식요소까지 합친 용어
+ex)
+table Element는 테이블 태그 아래에 존재하는 모든 요소를 말한다.
+
+Attribute(속성)
+시작태그 또는 빈태그에 위치하며 다른 속성과의 구분은 공백자로 구분한다.
+태그의 추가적 성질을 정의하는 역할을 수행한다.
+
+형식) 3가지 전부 사용가능함.
+[1]    <tag attr1="attribute value"> </tag>
+[2]    <tag attr1='attribute value'> </tag>
+[3]    <tag attr1=attribute value> </tag>
+
+HTML5의 특징
+
+1.멀티미디어 요소 재생 [ 영상 ]
+2.서버와 통신 [ 소켓통신가능 ]
+3.시맨틱 태그 추가 [ 태그에 의미를 부여하는 시맨틱태그 추가 ]
+4.틀린 문법이 있을 시 이를 무시함.
+
+스타일시트 적용 3가지        우선순위
+[1] 외부 스타일시트            3
+[2] 내부 스타일시트            2
+[3] 인라인스타일시트           1
+
+html 구조
+css 표현
+js 동작
+
+주석
+<!-- 포함되지 않는 내용들임 -->
+
+Encoding 설정
+<meta charset='UTF-8'>
+
+class 중복이 가능한 선택자 호출 시에 .class_Name
+id 중복되면 불가능한 유일한 선택자   #id_name
+<span> </span> 일자 범위 - 라인변경을 제한할 때 사용
+
+Heading
+<h1> ~ </h1>
+<h6> ~ </h1>
+
+2-7 특수문자
+
+&nbsp 공백자
+&lt     <
+&gt     >
+&amp    &
+&quot   "
+&copy   copyright
+&reg    registered TradeMark
+
+<hr> 구분선
+<b>, <strong> 굵은 글씨로 표시 
+<i>,<em> 이탤릭 표시
+<sup> , <sub> 위첨자 아래첨자
+<pre> 공백 줄 바꿈 등 입력된 그대로 표시
+<s>,<u> 취소선, 밑줄
+
+
+
+table
+Row와 Column의 Cell을 표시
+행 그룹 요소 <thead> <tbody> <tfoot> 
+<colgroup>과 <col> 요소는 열 그룹을 위한 추가적 구조정보 제공
+
+table의 머리글이 thead 
+내용이 tbody
+
+colspan 속성
+
+img 태그
+<img src= 링크 , title="tooltip"
+alt="이미지가 존재하지 않을 때 뜨는 내용"> 대체 문자열
+
+<a>  Anchor 태그
+<a href="#" target="_self"></a>
+다른 문서로 연결하기 위해 사용하는 태그[하이퍼링크]
+tag를 중첩하여 사용 불가하며 href 속성은 클릭 시에 이동할 <url>이나 <문서 책갈피>를 지정
+target 속성 클릭 시 현재 윈도우에서 이동할 지 새 윈도우에서 이동할 지 지정.
+_self : 현재 윈도우 변경 - 기본
+_blank : 새로운 윈도우에 변화 환경 전환
+
+href=#id_name 책갈피 이동
+href="https://www.naver.com" url 이동
+
+link 외부 자원을 가져올 때 사용하는 태그
+
+<form> 태그
+사용자의 데이터를 입력받아 서버에 처리하기  위한 용도로 사용하는 태그
+
+속성
+action 데이터를 전송할 url - 명시하지 않을 시 자기 자신을 재귀 호출함.
+method 전송할 방식 get post ....etc [메소드의 기본 방식은 get]
+
+
+
+입력을 받는 tag들
+input 
+textarea 여러줄 문자 입력가능하게 함
+select selectbox 
+button 
