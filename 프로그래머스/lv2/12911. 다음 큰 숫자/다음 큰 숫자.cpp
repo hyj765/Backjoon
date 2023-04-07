@@ -23,3 +23,20 @@ int solution(int n) {
     answer = cur;
     return answer;
 }
+
+/*
+
+    #include<bitset>
+    
+    int solution(int n) {
+
+	int num = bitset<20>(n).count();
+	while (bitset<20>(++n).count() != num);
+
+	return n;
+}
+
+
+
+
+*/
