@@ -32,7 +32,6 @@ bool check(int x, int y, const vector<string>& board,int n,int m){
         
         if(y < 0 || y >= m || x >= n) return false;
         if(board[x][y] != value) return false;
-        if(board[x][y] == '0') return false;
     }
     
     return true;
@@ -53,6 +52,7 @@ int solution(int n, int m, vector<string> board) {
         set<pair<int,int>> dellist;
         for(int i=0; i<n; ++i){
             for(int j=0; j<m; ++j){
+                if(board[i][j] == '0') continue;
                 if(check(i,j,board,n,m)){
                     int x = i;
                     int y = j;
