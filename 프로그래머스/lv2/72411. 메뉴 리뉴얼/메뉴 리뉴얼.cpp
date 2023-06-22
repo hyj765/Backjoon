@@ -17,7 +17,6 @@ int cnt[11];
 void subset(string s,const string& order,set<string>& list,int depth){
     
     if(s.size() > 1 && menusize[s.size()]){
-        sort(s.begin(),s.end());
         list.insert(s);
     }
     if(depth == order.size()) return;
@@ -31,6 +30,7 @@ vector<string> solution(vector<string> orders, vector<int> course) {
     map<string,int> listcnt;
     for(int len:course) menusize[len] = true;
     for(string order:orders){
+        sort(order.begin(),order.end());
         set<string> list;
         subset("",order,list,0);
         for(string li:list){
