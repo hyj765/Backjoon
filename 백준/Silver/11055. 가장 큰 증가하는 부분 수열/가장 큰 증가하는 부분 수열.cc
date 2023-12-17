@@ -1,32 +1,27 @@
 #include<iostream>
+#include<vector>
 using namespace std;
-#define max(a,b) (a > b) ? a : b
 
-int N;
-int arr[1001];
 int dp[1001];
 
-int main(void)
-{
-    cin >> N;
+int main() {
 
-    for (int i = 0; i < N; i++)
-        cin >> arr[i];
+	int n,answer = 0;
+	cin >> n;
+	vector<int> arr(n);
+	for (int i = 0; i < n; ++i) cin >> arr[i];
+	dp[0] = arr[0];
+	for (int i = 0; i <n; ++i) {
+		dp[i] = arr[i];
+		for (int j = 0; j < i; ++j) {
+			if (arr[i] > arr[j]) {
+				dp[i] = max(dp[i],dp[j]+arr[i]);
+			}
+		}
 
-    for (int i = 0; i < N; i++)
-    {
-        dp[i] = arr[i];
-        for (int j = 0; j < i; j++)
-        {
-            if (arr[j] < arr[i]) dp[i] = max(dp[i], dp[j] + arr[i]);
-        }
-    }
+		answer = max(answer, dp[i]);
+	}
 
-    int ans = dp[0];
-    for (int i = 1; i < N; i++)
-        if (ans < dp[i]) ans = dp[i];
+	cout << answer;
 
-    cout << ans;
-
-    return 0;
 }
