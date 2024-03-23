@@ -1,33 +1,32 @@
 #include<iostream>
-#include<string>
+#include<vector>
+#include<algorithm>
 using namespace std;
 
-int constructor(int n) {
+int getCont(int n) {
 	int temp = n;
-	string st = to_string(n);
-	for (int i = 0; i < st.size(); ++i) {
-		temp += st[i] - '0';
+	while (n > 0) {
+		int mod=n % 10;
+		n /= 10;
+		temp += mod;
 	}
 	return temp;
 }
 
-
-
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-	int n;
-	cin >> n;
-	int i = 1;
-	int answer = 0;
-	while (i < n) {
 
-		if (constructor(i) == n) {
-			answer = i;
-			break;
+	int n;
+	int answer = 0;
+	cin >> n;
+	int temp = n;
+	while (n > 0) {
+		n--;
+
+		if (getCont(n) == temp) {
+			answer = n;
 		}
-		i++;
+
+
 	}
 
 	cout << answer;
