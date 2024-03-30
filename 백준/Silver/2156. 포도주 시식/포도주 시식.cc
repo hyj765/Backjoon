@@ -1,42 +1,41 @@
+#include <string>
+#include <vector>
 #include<iostream>
-#include<vector>
 using namespace std;
 
+/*
 
+	1. 포도주 잔을 선택 시에 그 잔에 들어있는 포도주는 모두 마셔야한다. 마신 후 원래 위치에 다시 놓아야한다.?
+	2. 연속 3잔 마시기 불가.
 
-int dp[10001];
+	(n + n+1 + n+3) , n + n+2 + n+3)
+*/
+
 
 int main() {
-
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 	int n;
 	cin >> n;
-
-	vector<int> arr(n + 1);
+	long long dp[10001];
+	dp[0] = 0;
+	vector<long long> s(n+1);
 
 	for (int i = 1; i <= n; ++i) {
-		cin >> arr[i];
+		cin >> s[i];
 	}
-	dp[0] = arr[0] = 0;
-	dp[1] = arr[1];
-	dp[2] = arr[1] + arr[2];
 
+	dp[1] = s[1];
+	dp[2] = s[2] + s[1];
 	for (int i = 3; i <= n; ++i) {
-		int temp = dp[i - 3] + arr[i - 1] + arr[i];
-		int temp2 = dp[i - 2] + arr[i];
-		int temp3 = dp[i - 1];
-		dp[i] = max(temp3,max(temp2,temp));
+		dp[i] = max(max(dp[i - 2] + s[i], dp[i - 3] + s[i - 1] + s[i]),dp[i-1]);
 	}
 
-
-	cout << dp[n];
-	/*
-		1 3 , 1 2, 2 3
-
-		dp[3] = max(dp[i-3] + arr[i-2] + arr[i-1], dp[i-2] + arr[i], 	
-		0 6 10 13 9 8 1
-
-	
+	/*	
 	
 	*/
 
+
+	cout << dp[n];
+	
 }
