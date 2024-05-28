@@ -1,47 +1,41 @@
 #include<iostream>
-#include <vector>
-#include <string>
+#include<vector>
+#include<algorithm>
+#include<string>
 using namespace std;
 
 
 
+int main()
+{
+	int answer = 0;
+	bool isminus = false;
 
-int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	string v;
-	cin >> v;
+	string vs;
+	cin >> vs;
 	
-	bool isMinus = false;
-	string temp;
-	int n = 0;
-	for (int i = 0; i < v.size(); ++i) {
-		if (v[i] != '-' && v[i] != '+') temp += v[i];
-		else {
-			if (isMinus) {
-				n -= atoi(temp.c_str());
+	string num = "";
+	for (int i = 0; i <= vs.size(); ++i)
+	{
+		if (vs[i] == '-' || vs[i] == '+' || i == vs.size())
+		{
+			if (isminus)
+			{
+				answer -= stoi(num);
+				num = "";
 			}
 			else {
-				n += atoi(temp.c_str());
-			}
-			temp.clear();
-		}
-		if (v[i] == '-') {
-			isMinus = true;
-		}
-		if (i == v.size() - 1) {
-			if (isMinus) {
-				n -= atoi(temp.c_str());
-			}
-			else {
-				n += atoi(temp.c_str());
+				answer += stoi(num);
+				num = "";
 			}
 		}
+		else 
+		{
+			num += vs[i];
+		}
+
+		if (vs[i] == '-') isminus = true;
 	}
-	
-	printf("%d",n);
 
-	return 0;
+	cout << answer;
 }
