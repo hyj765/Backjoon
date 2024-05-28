@@ -43,8 +43,8 @@ int main()
 	
 	*/
 	
-	int cur = cost[0];
-	int capdis = 0;
+	ll cur = cost[0];
+	ll capdis = 0;
 	for (int i = 0; i < n; ++i)
 	{
 		if (cur > cost[i] || i == n-1)
