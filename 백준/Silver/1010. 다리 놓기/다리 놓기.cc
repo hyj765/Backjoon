@@ -1,30 +1,24 @@
 #include<iostream>
-#include<vector>
-#include<queue>
 using namespace std;
 
-
-int cnt = 0;
-
-
-
-
-
-int main() {
-
-	int k, n, m;
-
-	cin >> k;
-
-	for (int i = 0; i < k; ++i) {
-		cin >> n >> m;
-		int res = 1, temp = 1;
-		for (int j = m; j > m - n; --j) {
-			res = res * j;
-			res = res / temp++;
-		}
-
-		cout << res << endl;
-	}
-
+int main()
+{
+   int T;
+    cin >> T;
+    for(int i=0; i<T; ++i)
+    {
+        long long answer = 1;
+        int n =0;
+        int m = 0;
+        int r = 1;
+        cin >> n >> m;
+        for(int j=m; j > m-n; --j)
+        {
+            answer = answer * j;
+            answer = answer / r;
+            r++;
+        }
+        cout << answer << '\n';
+    }
+    
 }
