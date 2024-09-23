@@ -1,46 +1,72 @@
 #include<iostream>
-#include<vector>
 #include<queue>
 using namespace std;
 
-// 1 2
+int speed = 100001;
 
-int myturn = INT32_MAX;
-void bfs(int n, int m) {
-	if (n == m) {
-		myturn = 0;
-		return;
+bool visit[100001];
+
+struct compare
+{
+	bool operator()(pair<int, int> a, pair<int, int> b)
+	{
+		return a.second > b.second;
 	}
-	priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> que;
-	que.push({ 0,n });
-	vector<bool> visit(100001, false);
 
-	while (!que.empty()) {
-		int turn = que.top().first;
-		int cur = que.top().second;
-		que.pop();
-		visit[cur] = true;
-		if (cur == m) {
-			myturn = turn;
-			return;
-		}
-		if (cur - 1 >= 0 && !visit[cur - 1]) que.push({ turn + 1, cur - 1 });
-		if (cur + 1 <= 100000 && !visit[cur + 1]) que.push({ turn + 1, cur + 1 });
-		if (cur *2 <= 100000 && !visit[cur *2]) que.push({ turn, cur *2 });
-	}
-}
+};
 
 
+int main()
+{
+	
 
-
-
-int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
 	int n, m;
+
 	cin >> n >> m;
 
-	bfs(n, m);
-	cout << myturn;
+	if (n == m)
+	{
+		cout << 0;
+		return 0;
+	}
+
+	priority_queue<pair<int,int>,vector<pair<int,int>>,compare> q;
+	
+	q.push({n,0});
+
+	while (!q.empty())
+	{
+		int x = q.top().first;
+		int time = q.top().second;
+		q.pop();
+
+		visit[x] = true;
+		
+		if (x == m )
+		{
+			speed = time;
+			break;
+		}
+
+
+		if (x + 1 <= 100000 && visit[x + 1] == false)
+		{
+			q.push({ x + 1, time + 1 });
+			
+		}
+
+		if (x - 1 >= 0 && visit[x - 1] == false)
+		{
+			q.push({ x - 1, time + 1 });
+		}
+
+		if (x * 2 <= 100000 && x * 2 > 0 && visit[x * 2] == false)
+		{
+			q.push({ x * 2,time });
+		}
+
+
+	}
+
+	cout << speed;
 }
